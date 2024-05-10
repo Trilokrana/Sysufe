@@ -9,7 +9,7 @@ import { RiShareFill } from "react-icons/ri";
 
 import Popular from "./Popular";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
-import "./App.css";
+import "./App.css"; // App.css file was not applying to the code , so  I have used Inline styles
 import { ToastContainer, toast } from "react-toastify"; // import react-toastify
 import "react-toastify/dist/ReactToastify.css"; // import styles
 
@@ -108,7 +108,7 @@ export default function Story() {
     const Url = `${window.location.origin}/${category.toLowerCase()}`;
     setCategoryUrl(Url);
   };
-  
+
   const Copied_Url = () => {
     navigator.clipboard.writeText(categoryUrl);
     // add toast to show that url has been copied
@@ -383,9 +383,10 @@ export default function Story() {
     windowWidth > 425 ? setContent(true) : setContent(false);
   }, [windowWidth]);
 
-  const handleFlip = () => {         // update handleFlip function 
+  const handleFlip = () => {
+    // update handleFlip function
     const newFlipped = !flipped;
-    setFlipped(newFlipped); 
+    setFlipped(newFlipped);
 
     const sortedInitialCategories = initialCategories.slice().sort((a, b) => {
       return newFlipped
@@ -395,7 +396,6 @@ export default function Story() {
     // Update initialCategories with the newly sorted array
     setInitialCategories(sortedInitialCategories);
 
-  
     if (searchResults2 && searchResults2.length > 0) {
       const sortedSearchResults = searchResults2.slice().sort((a, b) => {
         return newFlipped
@@ -783,7 +783,7 @@ export default function Story() {
                     <h3>What are you looking for?</h3>
                   </label>
                   <input
-                    type="search"   // "text" to "search" , add a search bar to filter the topics by keyword
+                    type="search" // "text" to "search" , add a search bar to filter the topics by keyword
                     id="choose"
                     placeholder="Browse a Category"
                     value={search}
@@ -824,7 +824,7 @@ export default function Story() {
                       {/*set the sort under the dropdown menu */}
                       Sort: {flipped ? `Newest to Oldest` : `Oldest to Newest`}
                     </li>
-                    {search.length === 0   // add a search  bar for all categories here 
+                    {search.length === 0 // add a search  bar for all categories here
                       ? initialCategories?.map((category) => (
                           <li
                             style={{
@@ -851,8 +851,8 @@ export default function Story() {
                             </Link>
                             <span>
                               {favorites.includes(category) ? (
-                                <span> 
-                                  <AiFillStar   // add a star icon when the category is favorited
+                                <span>
+                                  <AiFillStar // add a star icon when the category is favorited
                                     size={23}
                                     onClick={() => toggleFavorite(category)}
                                     style={{
@@ -861,7 +861,7 @@ export default function Story() {
                                     }}
                                   />
                                   <span>
-                                    <RiShareFill    //add a share icon here for sharing favorite category
+                                    <RiShareFill //add a share icon here for sharing favorite category
                                       size={23}
                                       onClick={() => shareCategory(category)} // share the link of this category
                                       style={{ cursor: "pointer" }}
